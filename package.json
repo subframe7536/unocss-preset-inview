@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-inview",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "UnoCSS preset for scroll inview animation",
   "author": "subframe7536",
   "license": "MIT",
@@ -43,10 +43,14 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "vite playground",
     "build": "unbuild",
-    "release": "pnpm run build && bumpp && npm publish",
+    "release": "pnpm run build && bumpp --all && npm publish",
     "format": "eslint . --fix",
     "test": "vitest",
     "test:update": "vitest --update",
