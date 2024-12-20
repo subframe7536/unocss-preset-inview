@@ -57,7 +57,7 @@
     "deploy": "vite build playground"
   },
   "peerDependencies": {
-    "@unocss/core": "^0.65.2"
+    "@unocss/core": "*"
   },
   "devDependencies": {
     "@subframe7536/eslint-config": "^1.0.0",
