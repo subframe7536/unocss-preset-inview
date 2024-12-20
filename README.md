@@ -81,6 +81,10 @@ export interface UseInViewOptions {
 }
 ```
 
+## Credit
+
+[tailwindcss-intersect](https://github.com/heidkaemper/tailwindcss-intersect)
+
 ## License
 
 MIT
