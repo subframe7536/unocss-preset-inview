@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-inview",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "UnoCSS preset for scroll inview animation",
   "author": "subframe7536",
   "license": "MIT",
