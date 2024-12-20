@@ -1,65 +1,22 @@
 import { definePreset } from '@unocss/core'
 
-export interface StarterOptions {
-  /**
-   *  The number of columns in the grid system (Example option)
-   *
-   * @default 12
-   */
-  span?: number
-}
-
-export const presetStarter = definePreset((_options: StarterOptions = {}) => {
-  const span = _options.span ?? 12
-
+export const presetInView = definePreset(() => {
   return {
-    name: 'unocss-preset-starter',
-
-    theme: {
-      // Customize your theme here
-    },
-
-    // Customize your preset here
-    rules: [
-      ['custom-rule', { color: 'red' }],
-      [
-        /col-(\d+)/,
-        ([_, s]) => ({ width: `calc(${s} / ${span} * 100%)` }),
-        { autocomplete: 'col-<span>' },
-      ],
-    ],
-
+    name: 'unocss-preset-inview',
     // Customize your variants here
     variants: [
       {
         name: 'inview',
-        match(matcher) {
-          if (!matcher.startsWith('inview'))
+        match: (matcher) => {
+          if (!matcher.startsWith('inview-') && !matcher.startsWith('inview:')) {
             return matcher
-
+          }
           return {
-            matcher: matcher.slice(8),
-            selector: s => `${s}.active`,
+            matcher: matcher.slice(7),
+            selector: s => `${s}:not([no-inview])`,
           }
         },
       },
     ],
-
-    // You can also define built-in presets
-    presets: [
-      // ...
-    ],
-
-    // You can also define built-in transformers
-    transformers: [
-      // ...
-    ],
-
-    // Customize AutoComplete
-    autocomplete: {
-      shorthands: {
-        span: Array.from({ length: span }, (_, i) => `${i + 1}`),
-      },
-    },
   }
 })

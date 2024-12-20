@@ -22,6 +22,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./runtime": {
+      "types": "./dist/runtime.d.ts",
+      "import": "./dist/runtime.mjs",
+      "require": "./dist/runtime.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -39,14 +44,12 @@
     "dist"
   ],
   "scripts": {
+    "dev": "vite playground",
     "build": "unbuild",
-    "dev": "unbuild --stub",
-    "prepublishOnly": "pnpm run build",
-    "release": "bumpp --commit --push --tag && pnpm publish",
+    "release": "pnpm run build && bumpp && npm publish",
     "format": "eslint . --fix",
     "test": "vitest",
     "test:update": "vitest --update",
-    "play": "vite playground",
     "deploy": "vite build playground"
   },
   "peerDependencies": {
