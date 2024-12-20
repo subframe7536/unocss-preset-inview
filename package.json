@@ -1,8 +1,8 @@
 {
-  "name": "unocss-preset-starter",
+  "name": "unocss-preset-inview",
   "type": "module",
   "version": "0.0.0",
-  "description": "UnoCSS preset for inview animation",
+  "description": "UnoCSS preset for scroll inview animation",
   "author": "subframe7536",
   "license": "MIT",
   "homepage": "https://github.com/subframe7536/unocss-preset-inview#readme",

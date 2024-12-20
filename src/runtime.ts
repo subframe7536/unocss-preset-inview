@@ -1,3 +1,6 @@
+/**
+ * Options for {@link useInView}
+ */
 export interface UseInViewOptions {
   /**
    * Only trigger once
@@ -15,9 +18,21 @@ export interface UseInViewOptions {
   threshold?: number
 }
 
-type UseInViewReturn = [start: (cssSelector?: string) => void, stop: VoidFunction]
-
-export function useInView(options: UseInViewOptions = {}): UseInViewReturn {
+/**
+ * JS runtime for `inview-` class,
+ * use {@link https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver IntersectionObserver} under the hood
+ * @param options {@link UseInViewOptions}
+ * @example
+ * const [start, stop] = useInView(options)
+ * // check `document` exists and start observe the elements
+ * // default selector is '[class*="inview"]'
+ * start('custom-css-selector')
+ * // unobserve all elements and disconnect the observer
+ * stop()
+ */
+export function useInView(
+  options: UseInViewOptions = {},
+): [start: (cssSelector?: string) => void, stop: VoidFunction] {
   const { callback, once = true, threshold = 0.1 } = options
   let observer: IntersectionObserver | undefined
   function initObserver(): void {
