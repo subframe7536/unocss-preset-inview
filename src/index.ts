@@ -32,9 +32,9 @@ export const presetStarter = definePreset((_options: StarterOptions = {}) => {
     // Customize your variants here
     variants: [
       {
-        name: '@active',
+        name: 'inview',
         match(matcher) {
-          if (!matcher.startsWith('@active'))
+          if (!matcher.startsWith('inview'))
             return matcher
 
           return {
