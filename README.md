@@ -28,7 +28,7 @@ import { useInView } from 'unocss-preset-inview/runtime'
 
 export default function Home() {
   const [start, stop] = useInView()
-  onMount(() => start())
+  onMount(() => start(/* custom CSS selector or html elements */))
   onCleanup(stop)
   return (
     <div class="translate-y-30 op-0 transition-(250 ease-out) inview:(translate-y-0 op-100)">

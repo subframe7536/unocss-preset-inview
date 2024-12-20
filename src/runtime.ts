@@ -25,14 +25,14 @@ export interface UseInViewOptions {
  * @example
  * const [start, stop] = useInView(options)
  * // check `document` exists and start observe the elements
- * // default selector is '[class*="inview"]'
- * start('custom-css-selector')
+ * // support custom CSS selector or html elements, default is '[class*="inview"]'
+ * start()
  * // unobserve all elements and disconnect the observer
  * stop()
  */
 export function useInView(
   options: UseInViewOptions = {},
-): [start: (cssSelector?: string) => void, stop: VoidFunction] {
+): [start: (cssSelector?: string | HTMLElement[]) => void, stop: VoidFunction] {
   const { callback, once = true, threshold = 0.1 } = options
   let observer: IntersectionObserver | undefined
   function initObserver(): void {
@@ -63,7 +63,7 @@ export function useInView(
   return [
     (selector = '[class*="inview"]') => {
       if (typeof document !== 'undefined') {
-        const elements = Array.from(document.querySelectorAll(selector))
+        const elements = typeof selector === 'string' ? Array.from(document.querySelectorAll(selector)) : selector
         initObserver()
         for (const element of elements) {
           element.setAttribute('no-inview', '')
