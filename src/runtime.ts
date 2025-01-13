@@ -23,12 +23,14 @@ export interface UseInViewOptions {
  * use {@link https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver IntersectionObserver} under the hood
  * @param options {@link UseInViewOptions}
  * @example
+ * ```ts
  * const [start, stop] = useInView(options)
  * // check `document` exists and start observe the elements
  * // support custom CSS selector or html elements, default is '[class*="inview"]'
  * start()
  * // unobserve all elements and disconnect the observer
  * stop()
+ * ```
  */
 export function useInView(
   options: UseInViewOptions = {},
