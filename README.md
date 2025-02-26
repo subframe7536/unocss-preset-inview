@@ -22,6 +22,8 @@ The preset need some js runtime for trigger inview events, it use [IntersectionO
 
 in your component root (`solid-js` as example, but it is framework agnostic)
 
+A warn will be print in console if the `document` is undefined.
+
 ```tsx
 import { onCleanup, onMount } from 'solid-js'
 import { useInView } from 'unocss-preset-inview/runtime'
@@ -31,7 +33,7 @@ export default function Home() {
   onMount(() => start(/* custom CSS selector or html elements */))
   onCleanup(stop)
   return (
-    <div class="translate-y-30 op-0 transition-(250 ease-out) inview:(translate-y-0 op-100)">
+    <div class="translate-y-24 op-0 transition-(500 ease-out) inview:(translate-y-0 op-100) no-inview:scroll-mt-24">
       test
     </div>
   )
@@ -53,6 +55,24 @@ export default defineConfig({
 ```
 
 ## Types
+
+### Utils
+
+Utils that used by `useInView`
+
+```ts
+export function initObserver(
+  callback: IntersectionObserverCallback | undefined,
+  once: boolean | ((target: HTMLElement) => boolean),
+  threshold: number
+): IntersectionObserver
+
+export function bindObserver(observer: IntersectionObserver, selector: string | HTMLElement[]): void
+
+export function clearObserver(observer: IntersectionObserver): void
+```
+
+### Optiions
 
 ```ts
 export interface PresetInViewOptions {
