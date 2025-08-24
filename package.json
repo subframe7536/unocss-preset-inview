@@ -18,19 +18,12 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./runtime": {
-      "types": "./dist/runtime.d.ts",
-      "import": "./dist/runtime.mjs",
-      "require": "./dist/runtime.cjs"
-    }
+    ".": "./dist/index.js",
+    "./runtime": "./dist/runtime.js",
+    "./package.json": "./package.json"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
@@ -49,8 +42,8 @@
   },
   "scripts": {
     "dev": "vite playground",
-    "build": "unbuild",
-    "release": "pnpm run build && bumpp --all && npm publish",
+    "build": "tsdown",
+    "release": "bun run build && bumpp --all && npm publish",
     "format": "eslint . --fix",
     "test": "vitest",
     "test:update": "vitest --update",
@@ -60,15 +53,16 @@
     "@unocss/core": "*"
   },
   "devDependencies": {
-    "@subframe7536/eslint-config": "^1.1.5",
-    "@types/node": "^22.10.5",
-    "@unocss/eslint-plugin": "^65.4.0",
-    "bumpp": "^9.10.0",
-    "eslint": "^9.18.0",
-    "typescript": "^5.7.3",
-    "unbuild": "^3.3.0",
-    "unocss": "^65.4.0",
-    "vite": "^6.0.7",
-    "vitest": "^2.1.8"
+    "@subframe7536/eslint-config": "^1.3.2",
+    "@types/node": "^22.17.2",
+    "@unocss/eslint-plugin": "^66.4.2",
+    "@vitest/eslint-plugin": "^1.3.4",
+    "bumpp": "^10.2.3",
+    "eslint": "^9.34.0",
+    "tsdown": "^0.14.1",
+    "typescript": "^5.9.2",
+    "unocss": "^66.4.2",
+    "vite": "^7.1.3",
+    "vitest": "^3.2.4"
   }
 }

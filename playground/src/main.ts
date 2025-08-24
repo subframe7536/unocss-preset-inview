@@ -1,5 +1,6 @@
 import { useInView } from '../../src/runtime'
+
 import 'uno.css'
 
-const [start] = useInView()
+const [start] = useInView({ once: false })
 start()
